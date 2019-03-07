@@ -1,0 +1,70 @@
+<!--pages/home/tips/tips.wxml-->
+
+<import src="../../../wxParse/wxParse.wxml" />
+
+<view class='tips'>
+  <view class='tips-title'>
+    <text>展览介绍</text>
+    <view>
+      <image mode='scaleToFill' style='width:690rpx;height:320rpx;' src='{{info.info_thumb}}'></image>
+    </view>
+    <view class='tip-content'>
+    <!-- {{info.info_content}} -->
+     <!-- 用户在后台输入的内容  -->
+
+         <template is="wxParse" data="{{wxParseData:aHrefHrefData.nodes}}" /> 
+    
+    </view>
+  </view>
+  <view class='tips-title'>
+    <text>展览信息</text>
+    <view class='hall-info'>
+      <text class='iconfont icon-location'></text>
+      <text>{{info.pavilion_address}}</text>
+    </view>
+    <view class='hall-info'>
+      <text class='iconfont icon-shijianzhongbiao'></text>
+      <text>{{info.open_time}}</text>
+      <text class='open-time'>{{info.visit_time}}</text>
+    </view>
+    <view class='hall-info'>
+      <text class='iconfont icon-cir-cny'></text>
+      <text>{{info.tickets_price==0?"免费":info.tickets_price+"元"}}</text>
+    </view>
+  </view>
+  <view class='tips-title'>
+    <text>交通攻略</text>
+    <view class='tool'>
+      <text class='iconfont icon-ditie'></text>
+      <text>地铁：</text>
+      <view class='{{isBikeClick?"":"one_txt_cut"}}'>{{traffic.ditie}}</view>
+    </view>
+    <view class='tool'>
+      <text class='iconfont icon-gongjiao'></text>
+      <text>公交：</text>
+      <view class='{{isBusClick?"":"one_txt_cut"}}'>{{traffic.bus}}</view>
+    </view>
+    <view class='tool'>
+      <text class='iconfont icon-qiche'></text>
+      <text>驾车：</text>
+      <view class='{{isCarClick?"":"one_txt_cut"}}'>{{traffic.car}}</view>
+    </view>
+  </view>
+  <view class='tips-title'>
+    <text>周边住宿</text>
+    <text class='go-around' id="1" bindtap='goAround'>去地图查看更多周边信息</text>
+    <view class='hall-list' wx:for="{{info.hotel}}" wx:key="{{index}}">
+      <view class='hall-detail' >
+        <view class='detail-left'>
+          <image mode='scaleToFill' style='width:240rpx;height:160rpx;' src='{{item.hotel_image}}'></image>
+        </view>
+        <view class='detail-right'>
+          <view class='detail-title one-txt-cut'>{{item.hotel_name}}</view>
+          <view class='detail-address two-txt-cut'>{{item.hotel_address}}</view>
+          <view class='detail-tips'>{{item.nearby}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='go-map' id='0' bindtap='goAround'>去地图查看更多</view>
+</view>

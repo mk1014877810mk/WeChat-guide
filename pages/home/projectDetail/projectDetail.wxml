@@ -1,0 +1,184 @@
+<!--pages/home/projectDetail/projectDetail.wxml-->
+
+<import src="../../../wxParse/wxParse.wxml" />
+
+<view class='project'>
+  <!-- 讲解员信息头 -->
+  <view class='project-detail'>
+    <view class='explainer' wx:if="{{showExpInfo}}">
+      <view class='detail-img'>
+        <image mode='scaleToFill' style='width:60rpx;height:60rpx;' src='{{project.projectData.explain_image}}' data-explain_id="{{explain_id}}" bindtap='goExpPersonal'></image>
+      </view>
+      <view class='explainer-info'>
+        <view class='name one-txt-cut'>{{project.projectData.explain_name}}</view>
+        <view class='bir-date'>{{project.projectData.explain_age}} | {{project.projectData.explain_conset}}</view>
+        <view class='post-data'>发布于{{project.projectData.create_time}}</view>
+      </view>
+      <view class='attention'>
+        <!-- <text class='iconfont icon-biaoshilei_jiaoseqiehuan' data-items_id="{{id}}" bindtap='goProExpList'></text> -->
+        <image mode='scaleToFill' style='width:70rpx;height:70rpx;margin-top:-4rpx;' src='../../../images/explain.png' data-items_id="{{id}}" bindtap='goProExpList'></image>
+      </view>
+    </view>
+    <!-- 官方信息头 -->
+    <view class='hall-exolainer' wx:else>
+      <image mode='scaleToFill' class='head-pic' style='width:60rpx;height:60rpx;border-radius:50%;' src='../../../images/explain-origin.png'></image>
+      <view class='attention'>
+        <!-- <text class='iconfont icon-biaoshilei_jiaoseqiehuan' data-items_id="{{id}}" bindtap='goProExpList'></text> -->
+        <view class='hall-info'>该讲解数据来自于馆方</view>
+        <view class='hall-date'>发布于{{project.projectData.create_time}}</view>
+      </view>
+      <image mode='scaleToFill' style='width:70rpx;height:70rpx;margin-top:-4rpx;' src='../../../images/explain.png' data-items_id="{{id}}" bindtap='goProExpList'></image>
+    </view>
+    <view class='detail-info'>
+      <view class='detail-title'>{{project.projectData.items_name}}</view>
+      <image mode='widthFix' style='width:680rpx;height:320rpx;' src='{{project.projectData.items_thumb}}' />
+      <view class='radio'>
+        <view class='radio-btn'>
+          <text class='iconfont {{audio.playAudio?"icon-zanting1":"icon-play_icon"}}' bindtap='changeAudio'> </text>
+        </view>
+        <view class='radio-detail'>
+          <view class='radio-detail-top'>语音讲解
+            <text class='buffering' wx:if="{{audio.buffering}}">缓冲中...</text>
+          </view>
+          <slider bindchange="sliderChange" bindchanging="slideChanging" max="{{audio.maxTime}}" value='{{audio.playNum}}' backgroundColor="#d8d8d8" activeColor="#09f" block-size="12" block-color="#09f" />
+          <text class='start-time'>{{audio.playTime}}</text>
+          <text class='end-time'>{{audio.endTime}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='introduce'>
+      <view class='introduce-detail'>
+
+        <!-- 
+        <view class='introduce-title' wx:if="{{project.projectData.explain_title!==''}}">{{project.projectData.explain_title}}</view>
+        <view class='introduce-content' wx:if="{{project.projectData.explain_content!==''}}">{{project.projectData.explain_content}}</view>
+         -->
+
+        <!-- 用户在后台输入的内容  -->
+
+        <template is="wxParse" data="{{wxParseData:aHrefHrefData.nodes}}" />
+
+      </view>
+      <!-- <view class='gift'>用户已收{{project.projectData.reward_number}}个礼物</view> -->
+    </view>
+  </view>
+  <!-- 评论 -->
+  <view class='disc'>
+    <view class='discuss'>
+      <view class='discuss-insert'>
+        <input placeholder='欢迎写出你的神评论' confirm-type="send" bindconfirm="submitDiscuss" value="{{discuss.value}}" placeholder-class='placeholder-style' bindinput='insertVal' maxlength='300'></input>
+        <text class='iconfont icon-bi'></text>
+      </view>
+      <view class='discuss-right'>
+        <view bindtap='payToOther'>
+          <text class='iconfont icon-gifs'></text>
+          <text>打赏</text>
+        </view>
+        <view bind:tap='setHeartStatus'>
+          <text class='iconfont icon-zan2 {{changeHeart.click?"blue":""}}'></text>
+          <text>点赞</text>
+        </view>
+      </view>
+    </view>
+    <view class='disc-top'>
+      <view class='disc-top-left'>
+        评论
+        <text>({{discuss.discussData.length}})</text>
+      </view>
+      <view class='disc-top-right'>发表评论</view>
+    </view>
+    <view class='discuss-detail' wx:if="{{!discuss.showNoDiscuss}}">
+      <view wx:for="{{discuss.discussData}}" wx:key="{{index}}">
+        <view class='discuss-top'>
+          <view class='discuss-top-left'>
+            <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='{{item.user_img}}'></image>
+          </view>
+          <view class='discuss-top-right'>
+            <view class='user-name'>{{item.wx_nickname}}</view>
+            <view class='long-time'>{{item.create_time}}</view>
+            <view class='discuss-bottom'>
+              {{item.comm_content}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='no-discuss' wx:if="{{discuss.showNoDiscuss}}">当前暂无评论</view>
+  </view>
+
+  <!-- 打赏  -->
+  <view class='pay-modal' wx:if="{{pay.showPayModal}}" catchtap='hideModal'>
+    <view class='pay-select {{pay.showPayModal?"slide":""}}' catchtap='stopBubbling'>
+      <view class='pay-list {{pay.current==1?"current-pay":""}}' id="1" catchtap='choosePay'>
+        <view class='pay-top'>
+          <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/bixin.png'></image>
+        </view>
+        <view class='pay-bottom'>
+          <view class='money-one-money'>¥ 1</view>
+        </view>
+      </view>
+      <view class='pay-list {{pay.current==2?"current-pay":""}}' id="2" catchtap='choosePay'>
+        <view class='pay-top'>
+          <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/xiaohua.png'></image>
+        </view>
+        <view class='pay-bottom'>
+          <view class='money-one-money'>¥ 2</view>
+        </view>
+      </view>
+      <view class='pay-list {{pay.current==5?"current-pay":""}}' id="5" catchtap='choosePay'>
+        <view class='pay-top'>
+          <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/bangbangtang.png'></image>
+        </view>
+        <view class='pay-bottom'>
+          <view class='money-one-money'>¥ 5</view>
+        </view>
+      </view>
+
+      <view class='pay-list {{pay.current==10?"current-pay":""}}' id="10" catchtap='choosePay'>
+        <view class='pay-top'>
+          <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/bingqilin.png'></image>
+        </view>
+        <view class='pay-bottom'>
+          <view class='money-one-money'>¥ 10</view>
+        </view>
+      </view>
+      <view class='pay-list {{pay.current==20?"current-pay":""}}' id="20" catchtap='choosePay'>
+        <view class='pay-top'>
+          <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/qiaokeli.png'></image>
+        </view>
+        <view class='pay-bottom'>
+          <view class='money-one-money'>¥ 20</view>
+        </view>
+      </view>
+      <view class='pay-list {{pay.current==30?"current-pay":""}}' id="30" catchtap='choosePay'>
+        <view class='pay-top'>
+          <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/dangao.png'></image>
+        </view>
+        <view class='pay-bottom'>
+          <view class='money-one-money'>¥ 30</view>
+        </view>
+      </view>
+      <view class='pay-list {{pay.current==40?"current-pay":""}}' id="40" catchtap='choosePay'>
+        <view class='pay-top'>
+          <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/jitui.png'></image>
+        </view>
+        <view class='pay-bottom'>
+          <view class='money-one-money'>¥ 40</view>
+        </view>
+      </view>
+      <view class='pay-list {{pay.current==50?"current-pay":""}}' id="50" catchtap='choosePay'>
+        <view class='pay-top'>
+          <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/dagei.png'></image>
+        </view>
+        <view class='pay-bottom'>
+          <view class='money-one-money'>¥ 50</view>
+        </view>
+      </view>
+      <view class='pay-sure'>
+        <text>快快选择你喜欢的礼物送出吧~~~</text>
+        <text catchtap='payForYou'>赠送</text>
+      </view>
+    </view>
+  </view>
+
+</view>

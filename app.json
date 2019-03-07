@@ -1,0 +1,64 @@
+{
+  "pages": [
+    "pages/home/index/index",
+    "pages/home/expPersonal/expPersonal",
+    "pages/home/projectDetail/projectDetail",
+    "pages/home/proExpList/proExpList",
+    "pages/home/activityDetail/activityDetail",
+    "pages/home/tips/tips",
+    "pages/home/follow/follow",
+    "pages/home/around/around",
+    "pages/home/login/login",
+    "pages/guides/guide/guide",
+    "pages/scans/scan/scan",
+    "pages/scans/scanImg/scanImg",
+    "pages/scans/scanAR/scanAR",
+    "pages/scans/scanWebAr/scanWebAr",
+    "pages/myself/mine/mine",
+    "pages/myself/myDiscuss/myDiscuss",
+    "pages/myself/myFollow/myFollow",
+    "pages/myself/myReserve/myReserve",
+    "pages/myself/myExplain/myExplain",
+    "pages/myself/myHelp/myHelp",
+    "pages/myself/myHelpDetail/myHelpDetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#0099ff",
+    "navigationBarTitleText": "古埃及之旅",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/index/index",
+        "text": "主页",
+        "iconPath": "./images/home.png",
+        "selectedIconPath": "./images/home1.png"
+      },
+      {
+        "pagePath": "pages/guides/guide/guide",
+        "text": "导览",
+        "iconPath": "./images/guide.png",
+        "selectedIconPath": "./images/guide1.png"
+      },
+      {
+        "pagePath": "pages/scans/scan/scan",
+        "text": "扫描",
+        "iconPath": "./images/scan.png",
+        "selectedIconPath": "./images/scan1.png"
+      },
+      {
+        "pagePath": "pages/myself/mine/mine",
+        "text": "我的",
+        "iconPath": "./images/mine.png",
+        "selectedIconPath": "./images/mine1.png"
+      }
+    ],
+    "position": "bottom",
+    "backgroundColor": "#f7f7fa",
+    "selectedColor": "#0099ff",
+    "color": "#999"
+  }
+}

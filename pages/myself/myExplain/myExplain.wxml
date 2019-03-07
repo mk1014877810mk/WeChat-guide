@@ -1,0 +1,31 @@
+<!--pages/myself/myExplain/myExplain.wxml-->
+<view class='explainer'>
+  <view class='top-slide' wx:if="{{explainerList.length!=0}}">
+    <view class='slide-detail' wx:for="{{explainerList}}" wx:key="{{index}}" id="{{item.j_id}}" data-index="{{index}}" style='width:{{690-50*index}}rpx;top:{{index*12}}rpx;z-index:{{10000-index}};left:{{item.X}}rpx;opacity:{{item.opacity}};transition:{{item.transition}}s'
+      bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend='touchEnd'>
+      <view class='detail-top'>
+        <image mode='scaleToFill' style='width:100%;height:660rpx;' src='{{item.explain_image}}'></image>
+      </view>
+      <view class='detail-bottom'>
+        <view class='detail-bottom-name'>{{item.explain_name}}</view>
+        <view class='detail-bottom-info'>
+          <text>{{item.explain_age}}</text>
+          <text>{{item.explain_conset}}</text>
+          <text>共10个讲解</text>
+          <view>
+            <text class='iconfont icon-gifs'></text>
+            <text>3</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='no-data' wx:if="{{showNoData}}">当前没有关注的讲解员</view>
+  <view class='join-in' bindtap='joinInExplain'>
+    <view class='join-in-btn'>
+      <view class='btn'>+</view>
+      <view>加入志愿者</view>
+    </view>
+    <view class='join-tips'>志愿者：讲解展项可以意获取鼓励奖励金哟~~~</view>
+  </view>
+</view>

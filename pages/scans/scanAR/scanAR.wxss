@@ -1,0 +1,38 @@
+/* pages/scans/scanAR/scanAR.wxss */
+
+.recognition-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.btn-area {
+  position: absolute;
+  right: 20px;
+  left: 20px;
+  bottom: 5vh;
+  z-index: 1000;
+}
+
+.btn-area>view {
+  text-align: center;
+  line-height: 100rpx;
+}
+
+.btn-area .btn {
+  margin: 0 auto;
+  width: 12vh;
+  height: 12vh;
+  border-radius: 50%;
+  /* box-shadow: 0 0 8rpx 8rpx #ccc; */
+}
+
+.btn-area .msg-info {
+  margin: 0 auto;
+  width: 12vh;
+  height: 12vh;
+  line-height: 12vh;
+  border-radius: 50%;
+}

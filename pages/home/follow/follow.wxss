@@ -1,0 +1,115 @@
+/* pages/home/follow/follow.wxss */
+
+view, text, button {
+  color: #333;
+}
+
+.follow {
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 100rpx;
+}
+
+.follow .follow-title {
+  width: 100%;
+  height: 96rpx;
+  line-height: 96rpx;
+  font-weight: 600;
+  font-size: 36rpx;
+  text-align: center;
+}
+
+.follow .follow-content .explainer-detail {
+  display: inline-block;
+  width: 345rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0rpx 2rpx 10rpx #f5f3f3;
+}
+
+.follow .follow-content .explainer-detail:nth-child(2n+1) {
+  margin-right: 20rpx;
+}
+
+.follow .follow-content .explainer-detail .detail-top {
+  position: relative;
+}
+
+.follow .follow-content .explainer-detail .detail-top text {
+  position: absolute;
+  padding: 4rpx 10rpx;
+  left: 0;
+  top: o;
+  background-color: #09f;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.follow .follow-content .explainer-detail .detail-bottom {
+  padding: 20rpx;
+  line-height: 40rpx;
+}
+
+.follow .follow-content .explainer-detail .detail-bottom .detail-name {
+  font-size: 32rpx;
+}
+
+.follow .follow-content .explainer-detail .detail-bottom .detail-info text {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.follow .follow-content .explainer-detail .detail-bottom .detail-info text:nth-child(1) {
+  margin-right: 20rpx;
+}
+
+.follow .follow-content .explainer-detail .detail-bottom .detail-info text.iconfont {
+  float: right;
+  font-size: 34rpx;
+  line-height: 40rpx;
+}
+
+.follow .follow-content .explainer-detail .detail-bottom .detail-info text.iconfont.blue {
+  color: #09f;
+}
+
+/* 关注 */
+
+.follow .followed {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  padding: 0 50rpx;
+  box-sizing: border-box;
+  border-top: 1rpx solid #f5f3f3;
+  background-color: #fff;
+}
+
+.follow .followed>view:nth-child(1) {
+  display: inline-block;
+  font-size: 30rpx;
+  line-height: 100rpx;
+  color: #999;
+}
+
+.follow .followed>view:nth-child(2) {
+  float: right;
+  width: 150rpx;
+  height: 60rpx;
+  line-height: 56rpx;
+  margin-top: 20rpx;
+  font-size: 32rpx;
+  color: #fff;
+  background-color: #09f;
+  text-align: center;
+  border-radius: 10rpx;
+}
+
+.follow .followed .follow-detail {
+  display: inline-block;
+  width: 56rpx;
+  height: 56rpx;
+  margin-top: 16rpx;
+  margin-right: 14rpx;
+}

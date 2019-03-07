@@ -1,0 +1,49 @@
+<!--pages/home/expPersonal/expPersonal.wxml-->
+<view class='personal'>
+  <!-- 头部图片 -->
+  <view class='personal-top'>
+    <image mode='scaleToFill' style='width:100%;height:340rpx;' src='../../../images/jiangjie-bgc.png'></image>
+    <view>
+      <view class='attention blue' data-explain_id="{{explain_id}}" bindtap='followThisExp'>{{dataList.is_attention==0?"+ 关注":"已关注"}}</view>
+      <view class='per-info'>
+        <view class='per-pic'>
+          <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='{{dataList.explain_image}}'></image>
+        </view>
+        <view class='per-name'>
+          <text>{{dataList.explain_name}}</text>
+          <view>
+            <image mode='scaleToFill' style='width:60rpx;height:60rpx;' src='../../../images/hongqi.png'></image>
+            <text>{{dataList.explain_label}}</text>
+          </view>
+        </view>
+        <view class='per-year'>{{dataList.explain_age}} | {{dataList.explain_conset}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 讲解列表 -->
+  <view class='personal-list'>
+    <view class='personal-title'>他的讲解</view>
+    <view class='personal-detail' wx:for="{{expList}}" wx:key="{{index}}" data-item_id='{{item.items_id}}' data-explain_id='{{item.explain_id}}' bindtap='goProjectDetail'>
+      <view class='detail-top'>
+        <image mode='aspectFill' style='width:100%;height:100%' src='{{item.items_thumb}}'></image>
+        <view class='gift'>
+          <text class='iconfont icon-gifs'></text>
+          <text>{{item.reward_number}}</text>
+        </view>
+      </view>
+      <view class='detail-bottom'>
+        <view class='detail-title one-txt-cut'>{{item.explain_title }}</view>
+        <view class='detail-parise'>
+          <text class='iconfont icon-yanjing'></text>
+          <text class='detail-parise-num'>{{item.is_click}}</text>
+          <text class='iconfont icon-zan2'></text>
+          <text class='detail-parise-num'>{{item.is_link}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='load-text' wx:if="{{showLoadText}}">
+    <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/loading.gif' wx:if="{{sendAjax}}"></image>
+    <view>{{loadText}}</view>
+  </view>
+</view>

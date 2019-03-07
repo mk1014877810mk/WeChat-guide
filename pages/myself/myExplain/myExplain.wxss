@@ -1,0 +1,106 @@
+/* pages/myself/myExplain/myExplain.wxss */
+
+page {
+  background-color: #efeff4;
+}
+
+image {
+  display: block;
+}
+
+.explainer {
+  padding: 30rpx 30rpx 60rpx;
+  box-sizing: border-box;
+}
+
+/* 滑动部分 */
+
+.explainer .top-slide {
+  position: relative;
+  height: 820rpx;
+}
+
+.explainer .slide-detail {
+  position: absolute;
+  left: 0;
+  /* transform: translateX(-50%); */
+  height: 100%;
+  background-color: #fff;
+  border-radius: 30rpx;
+  overflow: hidden;
+  border: 1rpx solid #eee;
+  transition: opacity 0.5s;
+}
+
+.explainer .top-slide .detail-bottom {
+  padding: 30rpx 30rpx 0;
+}
+
+.explainer .top-slide .detail-bottom .detail-bottom-name {
+  font-size: 36rpx;
+  margin-bottom: 12rpx;
+}
+
+.explainer .top-slide .detail-bottom .detail-bottom-info>text {
+  font-size: 28rpx;
+  margin: 0 5rpx;
+  padding: 2rpx 10rpx;
+  color: #999;
+  box-sizing: border-box;
+  border-radius: 5rpx;
+  background-color: #e9e9e9;
+}
+
+.explainer .top-slide .detail-bottom .detail-bottom-info>view {
+  position: absolute;
+  right: 20rpx;
+  bottom: 26rpx;
+}
+
+.explainer .top-slide .detail-bottom .detail-bottom-info>view>text {
+  color: #999;
+  margin: 0 10rpx;
+  font-size: 28rpx;
+}
+
+.explainer .top-slide .detail-bottom .detail-bottom-info>view>text.iconfont {
+  font-size: 34rpx;
+}
+
+/* 加入志愿者 */
+
+.join-in {
+  margin-top: 80rpx;
+  text-align: center;
+}
+
+.join-in .join-in-btn {
+  font-size: 28rpx;
+  color: #09f;
+}
+
+.join-in .join-in-btn .btn {
+  display: inline-block;
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 90rpx;
+  font-size: 70rpx;
+  background-color: #fff;
+  box-shadow: 0 0 10rpx 10rpx rgba(100, 100, 100, 0.3);
+  border-radius: 50%;
+  margin-bottom: 20rpx;
+}
+
+.join-in .join-tips {
+  font-size: 30rpx;
+  color: #999;
+  margin-top: 40rpx;
+}
+
+.explainer .no-data {
+  height: 300rpx;
+  font-size: 32rpx;
+  line-height: 300rpx;
+  color: #999;
+  text-align: center;
+}

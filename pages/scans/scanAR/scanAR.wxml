@@ -1,0 +1,11 @@
+<!--pages/scans/scanAR/scanAR.wxml-->
+<camera device-position="back" flash="off" binderror="error" style="width: 100vw; height: 80vh;"></camera>
+<view class='recognition-container'>
+  <view class="btn-area">
+    <!-- <view wx:if="{{showButton}}" class='btn' bindtap="takePhoto">{{msg}}</view> -->
+    <view wx:if="{{showButton}}" class='btn' bindtap="takePhoto">
+      <image mode='scaleToFill' style='width:14vh;height:14vh;margin-top:-4px;' src='../../../images/scanImg.png'></image>
+    </view>
+    <view wx:else class='msg-info'>{{msg}}</view>
+  </view>
+</view>

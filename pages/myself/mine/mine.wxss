@@ -1,0 +1,85 @@
+/* pages/myself/mine/mine.wxss */
+
+view, text, button {
+  color: #333;
+}
+
+/* 头部信息  */
+
+.mine-top {
+  width: 100%;
+  height: 320rpx;
+  position: relative;
+  border-bottom: 20rpx solid #f5f3f3;
+}
+
+.mine-top .pic {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 60rpx;
+  transform: translate(-50%);
+  -webkit-transform: translate(-50%);
+  box-shadow: 0 0 8rpx 8rpx rgba(220, 220, 220, 0.5);
+}
+
+.mine-top .pic image {
+  border-radius: 50%;
+}
+
+.user-name {
+  color: #333;
+  font-size: 32rpx;
+  position: absolute;
+  left: 50%;
+  bottom: 60rpx;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+}
+
+/* 相关浏览收藏等信息  */
+
+.mine-bottom {
+  padding: 0 30rpx 20rpx 90rpx;
+  box-sizing: border-box;
+}
+
+.mine-bottom>view {
+  width: 630rpx;
+  height: 88rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+  padding: 26rpx 0;
+  box-sizing: border-box;
+  font-size: 32rpx;
+  color: #333;
+  position: relative;
+}
+
+.mine-bottom>view .symbal {
+  position: absolute;
+  left: -60rpx;
+  top: 56%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  font-size: 40rpx;
+  color: #999;
+}
+
+.mine-bottom>view .arrow {
+  position: absolute;
+  right: 0;
+  top: 58%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+
+.iconfont {
+  color: #999;
+}
+
+.iconfont .arrow {
+  color: #c7c7c7;
+}

@@ -1,0 +1,54 @@
+<!--pages/scans/scan/scan.wxml-->
+<view class='scan'>
+  <view class='scan-top'>
+    <view>了解详情/动态的展品信息</view>
+    <view>小程序支持以下类型</view>
+  </view>
+  <view class='list' bindtap='modal'>
+    <text class='iconfont icon-icon--'></text>
+    <text>输入编号</text>
+    <image mode='scaleToFill' class='help' style='width:60rpx;height:60rpx;' src='../../../images/help.png' data-index='0' catchtap='showTestTips'></image>
+  </view>
+  <view class='list' bindtap='goScanImg'>
+    <text class='iconfont icon-iconfonterweima'></text>
+    <text>扫一扫</text>
+    <image mode='scaleToFill' class='help' style='width:60rpx;height:60rpx;' src='../../../images/help.png' data-index='1' catchtap='showTestTips'></image>
+  </view>
+  <view class='list' bindtap='goScanAR'>
+    <text class='iconfont icon-saomiao'></text>
+    <text>AR扫描</text>
+    <image mode='scaleToFill' class='help' style='width:60rpx;height:60rpx;' src='../../../images/help.png' data-index='2' catchtap='showTestTips'></image>
+  </view>
+  
+  <view class='test-tips' wx:if='{{tips.tip1}}'>
+    <view>请输入展项编号</view>
+    <view>例如：123456789</view>
+  </view>
+  <view class='test-tips' wx:if='{{tips.tip2}}'>
+    <text>扫描展项二维码可查看该展项详情</text> 
+    <view>
+      <text class='such-as'>例如：</text>
+      <image mode='scaleToFill' style='width:160rpx;height:160rpx;' src='../../../images/scan2.png'></image>
+    </view>
+  </view>
+  <view class='test-tips' wx:if='{{tips.tip3}}'>
+    <text>扫描展项实物可查看该展项详情</text> 
+    <view>
+      <text class='such-as'>例如：</text>
+      <image mode='scaleToFill' style='width:200rpx;height:200rpx;' src='../../../images/scan3.jpg'></image>
+    </view>
+  </view>
+  <view class='insert-num' wx:if="{{showModal}}">
+    <view class='modal'>
+      <view class='modal-title'>请输入展品编号</view>
+      <view class='input'>
+        <input value='{{value}}' maxlength='20' bindinput='insertValue' auto-focus='true'></input>
+      </view>
+      <view class='btn'>
+        <view bindtap='cancel'>取消</view>
+        <view bindtap='makeSure'>确定</view>
+      </view>
+    </view>
+    <view class='tips {{showAnimate?"animate":""}}' wx:if="{{showTips}}">{{tipText}}</view>
+  </view>
+</view>

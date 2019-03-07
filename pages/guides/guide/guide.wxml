@@ -1,0 +1,168 @@
+<view class='guide'>
+  <view class='around'>
+    <image mode='scaleToFill' style='width:100%;height:100%;' src='../../../images/periphery.png' bindtap='goAround'></image>
+  </view>
+  <!-- 地图 -->
+  <view class='map-box' style='height:{{windowHeight}}px'>
+    <view class='map' bindtouchstart='startHandle' bindtouchmove='moveHandle' style='left:{{map.leftDistance}}px;top:{{map.topDistance}}px;'>
+      <image mode='scaleToFill' src='{{map.imageSrc}}' bindload="imgLoad" style='width:{{map.imageWidth}}px;height:{{map.imageHeight}}px;'></image>
+      <view class='proj-info' wx:for="{{map.proInfoList}}" wx:key="{{index}}" style="left:{{item.left}}px;top:{{item.top}}px;">
+        <!-- 展项图标上的展项图片 -->
+        <view class='info-tips' wx:if="{{item.showTips}}" style='transform:{{item.childTransform}};left:{{item.childLeft}};top:{{item.childTop}};'>
+          <image mode='scaleToFill' style='width:198rpx;height:220rpx;' src='../../../images/bgc.png'></image>
+          <view class='info-img'>
+            <image bindtap='goProjectDetail' id="{{item.i_id}}" mode='scaleToFill' style='width:164rpx;height:164rpx;border-radius: 50%;transform:{{item.grandChildTransform}}' src='{{item.items_thumb}}'></image>
+          </view>
+        </view>
+        <!-- 展项图标 -->
+        <image mode='scaleToFill' bindtap='showTips' id="{{item.i_id}}" data-index='{{item.index}}' style='width:80rpx;height:80rpx;display:block;' src='../../../images/location.png'></image>
+        <view class='info-name one-txt-cut'>{{item.items_name}}</view>
+      </view>
+      <!-- 定位图标 -->
+      <view class='current-position' style='left:{{current.left}}px;top:{{current.top}}px;'>
+        <view class='show-position-text' wx:if='{{current.showText}}'>{{current.text}}</view>
+        <image mode='scaleToFill' style='width:23px;height:25px;' src='../../../images/marker_red.png'></image>
+      </view>
+    </view>
+  </view>
+  <!-- 音乐播放器 -->
+  <view class='radio {{showAudio?"":"show2"}}'>
+    <view class='radio-modal' wx:if='{{audio.showModal}}'> 资源获取中... </view>
+    <image wx:if='{{!project.info.explain_image}}' mode='scaleToFill' style='width:90rpx;height:90rpx;' bindtap='goExpPersonal' src='../../../images/explain-origin.png' />
+    <image wx:else mode='scaleToFill' style='width:100rpx;height:100rpx;' bindtap='goExpPersonal' src='{{project.info.explain_image}}' />
+    <view class='radio-info'>
+      <view class='radio-detail'>
+        <view class='radio-detail-top'>{{project.info.items_name?project.info.items_name:'获取中...'}}</view>
+        <slider bindchange="sliderChange" bindchanging="slideChanging" max="{{audio.maxTime}}" value='{{audio.playNum}}' backgroundColor="#d8d8d8" activeColor="#09f" block-size="12" block-color="#09f" />
+        <text class='start-time'>{{audio.playTime}}</text>
+        <text class='end-time'>{{audio.endTime}}</text>
+      </view>
+      <view class='radio-btn' bindtap='changeAudio'>
+        <image wx:if="{{audio.playAudio}}" mode='scaleToFill' style='width:100%;height:100%' src='../../../images/off.png'></image>
+        <image wx:else mode='scaleToFill' style='width:100%;height:100%' src='../../../images/on.png'></image>
+        <!-- <text class='iconfont {{audio.playAudio?"icon-zanting1":"icon-play_icon"}}' bindtap='changeAudio'> </text> -->
+      </view>
+    </view>
+  </view>
+
+  <!-- 自动手动切换按钮 -->
+  <view class='switch'>
+    <switch color='#09f' checked='{{show}}' bindchange="switchChange"></switch>
+  </view>
+  <!-- 点赞等按钮 -->
+  <view class='switch-btn {{showAudio?"":"show1"}}'>
+    <view class='menu'>
+      <image mode='scaleToFill' style='width:100%;height:100%' src='../../../images/explain1.png' data-index="0" bindtap='showAudioList'></image>
+    </view>
+    <view class='gift'>
+      <image mode='scaleToFill' style='width:100%;height:100%' src='../../../images/gift.png' bindtap='payToOther'></image>
+    </view>
+    <view class='parise'>
+      <image mode='scaleToFill' wx:if='{{!praise.isPraise}}' style='width:100%;height:100%' src='../../../images/fabulous.png' bindtap='givePraise'></image>
+      <image mode='scaleToFill' wx:else style='width:100%;height:100%' src='../../../images/fabulous1.png' bindtap='givePraise'></image>
+    </view>
+  </view>
+  <!-- 打赏模态框 -->
+  <view class='pay-modal' wx:if="{{pay.showPayModal}}" catchtap='hideModal'>
+    <view class='pay-select {{pay.showPayModal?"slide":""}}' catchtap='stopBubbling'>
+      <view class='pay-list {{pay.current==1?"current-pay":""}}' id="1" catchtap='choosePay'>
+        <view class='pay-top'>
+          <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/bixin.png'></image>
+        </view>
+        <view class='pay-bottom'>
+          <view class='money-one-money'>¥ 1</view>
+        </view>
+      </view>
+      <view class='pay-list {{pay.current==2?"current-pay":""}}' id="2" catchtap='choosePay'>
+        <view class='pay-top'>
+          <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/xiaohua.png'></image>
+        </view>
+        <view class='pay-bottom'>
+          <view class='money-one-money'>¥ 2</view>
+        </view>
+      </view>
+      <view class='pay-list {{pay.current==5?"current-pay":""}}' id="5" catchtap='choosePay'>
+        <view class='pay-top'>
+          <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/bangbangtang.png'></image>
+        </view>
+        <view class='pay-bottom'>
+          <view class='money-one-money'>¥ 5</view>
+        </view>
+      </view>
+
+      <view class='pay-list {{pay.current==10?"current-pay":""}}' id="10" catchtap='choosePay'>
+        <view class='pay-top'>
+          <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/bingqilin.png'></image>
+        </view>
+        <view class='pay-bottom'>
+          <view class='money-one-money'>¥ 10</view>
+        </view>
+      </view>
+      <view class='pay-list {{pay.current==20?"current-pay":""}}' id="20" catchtap='choosePay'>
+        <view class='pay-top'>
+          <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/qiaokeli.png'></image>
+        </view>
+        <view class='pay-bottom'>
+          <view class='money-one-money'>¥ 20</view>
+        </view>
+      </view>
+      <view class='pay-list {{pay.current==30?"current-pay":""}}' id="30" catchtap='choosePay'>
+        <view class='pay-top'>
+          <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/dangao.png'></image>
+        </view>
+        <view class='pay-bottom'>
+          <view class='money-one-money'>¥ 30</view>
+        </view>
+      </view>
+      <view class='pay-list {{pay.current==40?"current-pay":""}}' id="40" catchtap='choosePay'>
+        <view class='pay-top'>
+          <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/jitui.png'></image>
+        </view>
+        <view class='pay-bottom'>
+          <view class='money-one-money'>¥ 40</view>
+        </view>
+      </view>
+      <view class='pay-list {{pay.current==50?"current-pay":""}}' id="50" catchtap='choosePay'>
+        <view class='pay-top'>
+          <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/dagei.png'></image>
+        </view>
+        <view class='pay-bottom'>
+          <view class='money-one-money'>¥ 50</view>
+        </view>
+      </view>
+      <view class='pay-sure'>
+        <text>快快选择你喜欢的礼物送出吧~~~</text>
+        <text catchtap='payForYou'>赠送</text>
+      </view>
+    </view>
+  </view>
+  <!-- 播放列表 -->
+  <view class='audioList {{explainList.showAudioList?"":"show3"}}'>
+    <scroll-view scroll-y style="height:100%;">
+      <view class='title'>
+        <text class='title-name'>{{project.info.items_name?project.info.items_name:'获取中...'}}</text>
+        <text class='iconfont icon-guanbi' data-index='1' bindtap='showAudioList'></text>
+      </view>
+      <view class='audioList-detail' wx:if='{{explainList.explainListData.length!=0}}'>
+        <view class='list-detail' wx:for='{{explainList.explainListData}}' wx:key='{{index}}' data-explain_id='{{item.explain_id}}' catchtap='changeExpSrc'>
+          <view class='detail-left'>
+            <image mode='scaleToFill' style='width:120rpx;height:120rpx;' src='{{item.explain_image}}'></image>
+          </view>
+          <view class='detail-right'>
+            <view class='detail-title one-txt-cut'>{{item.explain_title}}</view>
+            <view class='detail-listen'>有{{item.listen_number}}人正在听</view>
+            <view class='detail-info'>
+              <text class='detail-name'>{{item.explain_name}}</text>
+              <text class='detail-year'>{{item.explain_age}} {{item.explain_conset}}</text>
+              <view class='praise'>
+                <text class='iconfont icon-zan2' bindtap='goTips'></text>
+                <text class='praise-num'>{{item.is_link}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:else class='no-data'>暂无讲解员的讲解</view>
+    </scroll-view>
+  </view>
+</view>

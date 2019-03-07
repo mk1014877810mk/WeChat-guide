@@ -1,0 +1,81 @@
+/* pages/home/proExpList/proExpList.wxss */
+
+view, text {
+  color: #333;
+}
+
+.proExp {
+  padding-left: 30rpx;
+  box-sizing: border-box;
+}
+
+.proExp .proExp-detail {
+  width: 100%;
+  height: 180rpx;
+  padding: 30rpx 40rpx 30rpx 0;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.proExp .proExp-detail>view {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.proExp .proExp-detail>view>img {
+  display: block;
+}
+
+.proExp .proExp-detail>view.detail-right {
+  width: 540rpx;
+  margin-left: 20rpx;
+  line-height: 40rpx;
+}
+
+.proExp .proExp-detail>view.detail-right .detail-title {
+  font-size: 36rpx;
+  font-weight: 900;
+  line-height: 50rpx;
+}
+
+.proExp .proExp-detail>view.detail-right .detail-listen {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.proExp .proExp-detail>view.detail-right .detail-info {
+  font-size: 26rpx;
+}
+
+.proExp .proExp-detail>view.detail-right .detail-info .detail-name {
+  margin-right: 40rpx;
+  color: #999;
+}
+
+.proExp .proExp-detail>view.detail-right .detail-info .detail-year {
+  color: #999;
+}
+
+.proExp .proExp-detail>view.detail-right .detail-info .praise {
+  float: right;
+  color: #999;
+}
+
+.proExp .proExp-detail>view.detail-right .detail-info .praise .iconfont {
+  font-size: 30rpx;
+  color: #999;
+}
+
+.proExp .proExp-detail>view.detail-right .detail-info .praise .praise-num {
+  margin-left: 10rpx;
+  color: #666;
+}
+
+.no-data{
+  width: 100%;
+  height: 300rpx;
+  text-align: center;
+  line-height: 300rpx;
+  font-size: 32rpx;
+  color: #999;
+}

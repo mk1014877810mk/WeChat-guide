@@ -1,0 +1,6 @@
+<!--pages/scans/scanWebAr/scanWebAr.wxml-->
+<view class="container">
+    <web-view src="https://webar.easyar.cn/webar/?targetId=direct"></web-view>  
+    <!-- <web-view src="https://www.baidu.com"></web-view>   -->
+    <!-- <web-view src='https://dl.broadmesse.net/public/?id=6&from=singlemessage'></web-view> -->
+</view>

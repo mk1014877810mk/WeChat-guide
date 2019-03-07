@@ -1,0 +1,27 @@
+<!--pages/myself/myDiscuss/myDiscuss.wxml-->
+<view class='disc'>
+  <view class='discuss-detail' wx:if="{{!discuss.showNoDiscuss}}">
+    <view wx:for="{{discussList}}" wx:key="{{index}}">
+      <view class='discuss-top'>
+        <view class='discuss-top-left'>
+          <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='{{mine.src}}'></image>
+        </view>
+        <view class='discuss-top-right'>
+          <view class='user-name'>{{mine.name}}</view>
+          <view class='long-time'>{{item.create_time}}</view>
+          <view class='discuss-bottom'>
+            {{item.comm_content}}
+          </view>
+          <view class='discuss-from'>
+            来自：{{item.items_name}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='load-text' wx:if="{{showLoadText}}">
+    <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/loading.gif' wx:if="{{sendAjax}}"></image>
+    <view>{{loadText}}</view>
+  </view>
+  <view class='no-discuss' wx:if="{{showNoDiscuss}}">当前暂无评论</view>
+</view>

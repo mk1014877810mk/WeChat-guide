@@ -1,0 +1,171 @@
+/* pages/home/activityDetail/activityDetail.wxss */
+@import "../../../wxParse/wxParse.wxss";
+
+/* 活动头部 */
+
+.detail-top {
+  padding: 40rpx;
+  box-sizing: border-box;
+  border-bottom: 20rpx solid #f5f3f3;
+}
+
+.detail-top .detail-top-title {
+  font-weight: 600;
+  font-size: 36rpx;
+  color: #333;
+}
+
+.detail-top image {
+  margin: 40rpx 0;
+}
+
+.detail-top .detail-top-content view.detail-desc {
+  font-weight: 600;
+  font-size: 32rpx;
+  margin-bottom: 30rpx;
+  color: #333;
+}
+
+/* 活动信息 */
+
+.detail-info>view.detail-info-content {
+  min-height: 88rpx;
+  line-height: 88rpx;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #efefef;
+}
+
+.detail-info>view.detail-info-content:nth-last-child(1) {
+  border: none;
+}
+
+.detail-info>view.detail-info-content>text:nth-child(1) {
+  float: left;
+  font-size: 30rpx;
+  color: #666;
+}
+
+.detail-info>view.detail-info-content>text:nth-child(2) {
+  display: inline-block;
+  max-width: 520rpx;
+  font-size: 32rpx;
+  color: #333;
+  vertical-align: bottom;
+}
+
+/* 预约信息 */
+
+.order {
+  padding: 40rpx 50rpx 4rpx;
+  box-sizing: border-box;
+  margin-bottom: 100rpx;
+  border-top: 20rpx solid #f5f3f3;
+}
+
+.order .order-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.order .order-title>text:nth-child(2) {
+  float: right;
+  color: #ff3535;
+  font-size: 30rpx;
+  font-weight: normal;
+}
+
+.order .order-tips {
+  margin: 30rpx 0;
+  color: #999;
+  font-size: 28rpx;
+  line-height: 50rpx;
+}
+
+.order form .user-name, .order form .user-phone {
+  position: relative;
+  height: 140rpx;
+}
+
+.order form .user-name>.iconfont, .order form .user-phone>.iconfont {
+  position: absolute;
+  left: 20rpx;
+  top: 20rpx;
+  font-size: 40rpx;
+}
+
+.order form .user-name input, .order form .user-phone input {
+  width: 640rpx;
+  height: 88rpx;
+  padding-left: 80rpx;
+  font-size: 30rpx;
+  color: #333;
+  box-sizing: border-box;
+  background-color: #fbfbfb;
+  border: 1rpx solid #efeff4;
+}
+
+.order form .error-tips {
+  text-align: center;
+  margin-top: -4rpx;
+}
+
+.order form .error-tips>text {
+  margin: 0 5rpx;
+  font-size: 26rpx;
+  color: #ff3535;
+}
+
+.order form .clear-value{
+  position: absolute;
+  top: 10rpx;
+  right: 34rpx;
+  z-index: 2;
+  height: 88rpx;
+  margin-top: -8rpx;
+}
+.order form .clear-value>text{
+  font-size: 30rpx;
+  line-height: 88rpx;
+}
+
+.order .order-submit {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 750rpx;
+  height: 98rpx;
+  padding: 0 56rpx;
+  font-size: 32rpx;
+  line-height: 98rpx;
+  z-index: 2;
+  border-top: 1rpx solid #efeff4;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.order .order-submit>text:nth-child(1) {
+  color: #999;
+}
+
+.order .order-submit>text:nth-child(2) {
+  float: right;
+  width: 150rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-top: 19rpx;
+  text-align: center;
+  background-color: #09f;
+  border-radius: 10rpx;
+  color: #fff;
+}
+
+.order .order-submit>text.gray{
+  background-color: #ccc!important;
+  /* color: #000; */
+}
+
+.wxParse-img {
+  width: 100% !important;
+}

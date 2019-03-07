@@ -1,0 +1,511 @@
+view, text, button {
+  color: #333;
+}
+
+/* 周边入口 */
+
+.around {
+  position: fixed;
+  top: 60rpx;
+  right: 40rpx;
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.around text {
+  color: #fff;
+  font-size: 30rpx;
+  line-height: 60rpx;
+}
+
+/* 地图 */
+
+.map-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.map-box .btn {
+  position: absolute;
+  bottom: 60rpx;
+  left: 40rpx;
+}
+
+.map-box .btn view {
+  width: 60rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  margin: 20rpx;
+  background-color: #ccc;
+}
+
+.map-box .map {
+  position: absolute;
+}
+
+.map-box .map .pointer {
+  position: absolute;
+  z-index: 10;
+  font-size: 50rpx;
+}
+
+.map-box .map .pointer .exhibition-name {
+  font-size: 34rpx;
+}
+
+.map-box .map .pointer .exhibition-info {
+  display: inline-block;
+  width: 200rpx;
+  text-align: center;
+  font-size: 26rpx;
+  position: absolute;
+  bottom: 50rpx;
+  left: 50%;
+  transform: translateX(-70%);
+  background-color: #ccc;
+}
+
+.map-box .map .current-position {
+  position: absolute;
+  z-index: 3;
+}
+
+.map-box .map .current-position .show-position-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 110rpx;
+  transform: translate(-46%, -50%);
+  font-size: 28rpx;
+  color: #666;
+}
+
+/* 展项定位 */
+
+.proj-info {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.proj-info .info-tips {
+  position: absolute;
+  /* transform: translate(-30%, -100%); */
+  top: 0;
+  left: 0;
+  border-radius: 70%;
+  z-index: 2;
+}
+
+.proj-info .info-img {
+  position: absolute;
+  left: 18rpx;
+  top: 16rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.proj-info .info-name {
+  position: absolute;
+  max-width: 150rpx;
+  text-align: center;
+  top: 80rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 26rpx;
+  color: #999;
+}
+
+/* 播放器 */
+
+.guide .radio {
+  position: fixed;
+  left: 25rpx;
+  bottom: 25rpx;
+  z-index: 99;
+  width: 700rpx;
+  height: 140rpx;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 10rpx;
+  overflow: hidden;
+  box-shadow: 0 0 2rpx 4rpx #ddd;
+  transition: left 0.5s;
+}
+
+.guide .radio .radio-modal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
+  line-height: 140rpx;
+  text-align: center;
+  color: #fff;
+}
+
+.guide .radio>image {
+  vertical-align: top;
+  border-radius: 50%;
+  margin-right: 30rpx;
+}
+
+.guide .radio .radio-info {
+  position: relative;
+  vertical-align: top;
+  display: inline-block;
+  width: 510rpx;
+}
+
+.guide .radio .radio-info .radio-detail {
+  position: relative;
+  display: inline-block;
+  width: 420rpx;
+}
+
+.guide .radio .radio-info .radio-detail .radio-detail-top {
+  font-size: 26rpx;
+}
+
+.guide .radio .radio-info .radio-detail slider {
+  margin: 0;
+}
+
+.guide .radio .radio-info .radio-detail>text {
+  position: absolute;
+  font-size: 24rpx;
+  color: #09f;
+  bottom: -26rpx;
+}
+
+.guide .radio .radio-info .radio-detail>text.start-time {
+  left: 0;
+}
+
+.guide .radio .radio-info .radio-detail>text.end-time {
+  right: 0;
+}
+
+.guide .radio .radio-info .radio-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-30%);
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.guide .radio .radio-info .radio-btn .iconfont {
+  font-size: 60rpx;
+  color: #09f;
+}
+
+/* 切换手动自动导览 */
+
+.guide .switch {
+  position: fixed;
+  right: 30rpx;
+  bottom: 210rpx;
+  z-index: 10;
+  width: 90rpx;
+  height: 90rpx;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 0 4rpx 4rpx #ddd;
+  border-radius: 50%;
+}
+
+.guide .switch switch {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-46%, -60%);
+}
+
+/*swtich样式-start*/
+
+/*swtich整体大小*/
+
+.wx-switch-input {
+  width: 76rpx !important;
+  height: 40rpx !important;
+}
+
+/*白色样式（false的样式）*/
+
+.wx-switch-input::before {
+  width: 72rpx !important;
+  height: 36rpx !important;
+}
+
+/*绿色样式（true的样式）*/
+
+.wx-switch-input::after {
+  width: 36rpx !important;
+  height: 36rpx !important;
+}
+
+/* 列表、点赞、打赏按钮 */
+
+.switch-btn {
+  position: fixed;
+  bottom: 320rpx;
+  right: 30rpx;
+  z-index: 10;
+  width: 90rpx;
+  height: 320rpx;
+  text-align: center;
+  overflow: hidden;
+  transition: height 0.5s;
+}
+
+.switch-btn>view {
+  display: inline-block;
+  border-radius: 50%;
+  margin: 20rpx 0;
+  width: 70rpx;
+  height: 70rpx;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.switch-btn>view>text {
+  line-height: 70rpx;
+  font-size: 36rpx;
+  color: #fff;
+}
+
+/* 打赏操作  */
+
+.pay-modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.pay-select {
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  bottom: -430rpx;
+  width: 100%;
+  text-align: center;
+  padding: 20rpx;
+  box-sizing: border-box;
+  transition: all 20s;
+}
+
+.slide {
+  animation: move 0.3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes move {
+  0% {
+    bottom: -430rpx;
+  }
+
+  100% {
+    bottom: 100rpx;
+  }
+}
+
+.pay-select .pay-list {
+  display: inline-block;
+  width: 23%;
+  vertical-align: top;
+  padding: 20rpx 0;
+  border: 1px solid transparent;
+}
+
+.pay-select .pay-list image {
+  transition: transform 0.5s;
+}
+
+.current-pay {
+  border-color: #09f !important;
+}
+
+.current-pay image {
+  transform: scale(1.3);
+  -webkit-transform: scale(1.3);
+}
+
+.pay-select .pay-list:nth-child(8) {
+  padding-bottom: 8rpx !important;
+}
+
+.pay-select .pay-list .pay-bottom {
+  font-size: 28rpx;
+  text-align: center;
+  padding-top: 10rpx;
+}
+
+.pay-select .pay-list .pay-bottom .money-one-money {
+  color: red;
+  padding: 5rpx 0;
+}
+
+.pay-select .pay-sure {
+  border-top: 1rpx solid #eaeaea;
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  bottom: -98rpx;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  font-size: 30rpx;
+  height: 100rpx;
+  padding: 0 40rpx;
+}
+
+.pay-select .pay-sure>text {
+  display: inline-block;
+  vertical-align: middle;
+  height: 98rpx;
+  line-height: 98rpx;
+  color: #999;
+}
+
+.pay-select .pay-sure>text:nth-child(2) {
+  float: right;
+  margin-right: 14rpx;
+  width: 160rpx;
+  background-color: #09f;
+  text-align: center;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-top: 20rpx;
+  border-radius: 8rpx;
+  color: #fff;
+}
+
+/* 音乐列表 */
+
+.audioList {
+  position: fixed;
+  bottom: 20rpx;
+  left: 25rpx;
+  z-index: 100;
+  width: 700rpx;
+  height: 800rpx;
+  box-shadow: 0 2rpx 4rpx 4rpx #ddd;
+  border-radius: 10rpx;
+  background-color: #fff;
+  transition: bottom 0.3s;
+}
+
+.audioList .title {
+  width: 100%;
+  height: 98rpx;
+  line-height: 98rpx;
+  font-size: 34rpx;
+  font-weight: 600rpx;
+  text-align: center;
+  border-bottom: 1rpx solid #eaeaea;
+}
+
+.audioList .title .iconfont {
+  position: absolute;
+  right: 20rpx;
+}
+
+.audioList .audioList-detail {
+  padding-left: 20rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.audioList .audioList-detail .list-detail {
+  padding: 30rpx 20rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #eaeaea;
+}
+
+.audioList .audioList-detail .list-detail>view {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.audioList .audioList-detail .list-detail .detail-left {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.audioList .audioList-detail .list-detail .detail-right {
+  width: 500rpx;
+  margin-left: 20rpx;
+  line-height: 40rpx;
+}
+
+.audioList .audioList-detail .list-detail .detail-right .detail-title {
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.audioList .audioList-detail .list-detail .detail-listen {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.audioList .audioList-detail .list-detail .detail-info {
+  font-size: 26rpx;
+}
+
+.audioList .audioList-detail .list-detail .detail-info .detail-name {
+  margin-right: 40rpx;
+  color: #999;
+}
+
+.audioList .audioList-detail .list-detail .detail-info .detail-year {
+  color: #999;
+}
+
+.audioList .audioList-detail .list-detail .detail-info .praise {
+  float: right;
+}
+
+.audioList .audioList-detail .list-detail .detail-info .praise .iconfont {
+  font-size: 30rpx;
+  color: #999;
+}
+
+.audioList .audioList-detail .list-detail .detail-info .praise .praise-num {
+  margin-left: 10rpx;
+  color: #999;
+}
+
+.audioList .no-data {
+  font-size: 32rpx;
+  color: #666;
+  margin-top: 200rpx;
+  text-align: center;
+}
+
+/* 开关变换类名 */
+
+.show1 {
+  height: 0 !important;
+}
+
+.show2 {
+  left: -710rpx !important;
+}
+
+.show3 {
+  bottom: -810rpx !important;
+}

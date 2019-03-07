@@ -1,0 +1,83 @@
+<!--pages/home/activityDetail/activityDetail.wxml-->
+
+<import src="../../../wxParse/wxParse.wxml" />
+
+<view class='activity-detail'>
+  <view class='detail-top'>
+    <view class='detail-top-title'>{{message.activity_name}}</view>
+    <image mode='widthFix' style='width:100%;height:320rpx;' src='{{message.activity_thumb}}'></image>
+    <view class='detail-top-content'>
+      <view class='detail-desc'>活动介绍</view>
+
+      <!-- 用户自己输入的内容 -->
+      <!-- <view>{{message.activity_content}}</view> -->
+      <template is="wxParse" data="{{wxParseData:aHrefHrefData.nodes}}" />
+
+    </view>
+  </view>
+  <view class='detail-info'>
+    <view class='detail-info-content'>
+      <text>预约开始时间：</text>
+      <text>{{message.create_time}}</text>
+    </view>
+    <view class='detail-info-content'>
+      <text>活动时间：</text>
+      <text>{{message.start_time}}</text>
+    </view>
+    <view class='detail-info-content'>
+      <text>活动地点：</text>
+      <text class='detail-address'>{{message.activity_location}}</text>
+    </view>
+    <view class='detail-info-content'>
+      <text>人数限制：</text>
+      <text>{{message.people_count}}</text>
+    </view>
+    <view class='detail-info-content'>
+      <text>活动费用：</text>
+      <text>{{message.amount==0?"免费":message.amount+"元"}}</text>
+    </view>
+    <view class='detail-info-content'>
+      <text>活动对象：</text>
+      <text>{{message.limit_range}}</text>
+    </view>
+  </view>
+  <view class='order' wx:if='{{order.showOrder && message.is_reser==1}}'>
+    <view class='order-title'>
+      <text>我要预约</text>
+      <text wx:if="{{order.successOrder}}">预约成功</text>
+    </view>
+    <view class='order-tips'>
+      备注：报名成功后，请在活动前15分钟到集合地点签到（取消预约请于活动开始前12小时前操作，无故缺席者将被记录）。
+    </view>
+    <form>
+      <view class='user-name'>
+        <text class='iconfont icon-yonghu'></text>
+        <input name="user-name" value="{{order.userName}}" disabled='{{order.successOrder}}' bindinput="insertValue" bindfocus='focus' bindblur='blur' data-index="0" placeholder='请输入姓名' placeholder-style='font-size:30rpx;' maxlength="20" />
+        <view class='error-tips' wx:if="{{order.showNameTips}}">
+          <text class='iconfont icon-cuowu'></text>
+          <text>姓名不能为空</text>
+        </view>
+        <view class='clear-value' bindtap='clearVal' data-index='1'>
+          <text class='iconfont icon-cuowu' wx:if="{{!order.successOrder}}"></text>
+        </view>
+      </view>
+      <view class='user-phone'>
+        <text class='iconfont icon-shouji'></text>
+        <input name="user-phone" value="{{order.userPhone}}" disabled='{{order.successOrder}}' bindinput="insertValue" bindfocus='focus' bindblur='blur' data-index="1" placeholder='请输入手机号' placeholder-style='font-size:30rpx;' maxlength="11" />
+        <view class='error-tips' wx:if="{{order.showPhoneTips}}">
+          <text class='iconfont icon-cuowu'></text>
+          <text>手机号码格式错误</text>
+        </view>
+        <view class='clear-value' bindtap='clearVal' data-index='2'>
+          <text class='iconfont icon-cuowu' wx:if="{{!order.successOrder}}"></text>
+        </view>
+      </view>
+    </form>
+    <view class='order-submit'>
+      <text>剩余名额 {{message.remain_count}}</text>
+      <text class='{{message.remain_count==0||order.showGray?"gray":""}}' data-flag='{{message.remain_count==0||order.showGray?"gray":""}}' bindtap='submitOrder'>{{order.successOrder?"取消预约":"预约"}}</text>
+      <!-- data-flag是判断在点击的时候是否置灰的标识  -->
+    </view>
+  </view>
+
+</view>

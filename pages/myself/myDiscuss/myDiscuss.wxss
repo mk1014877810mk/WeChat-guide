@@ -1,0 +1,59 @@
+/* pages/myself/myDiscuss/myDiscuss.wxss */
+
+.discuss-detail {
+  padding-left: 34rpx;
+  box-sizing: border-box;
+}
+
+.discuss-detail>view {
+  padding: 30rpx 0 0 10rpx;
+}
+
+.discuss-detail .discuss-top .discuss-top-left {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.discuss-detail .discuss-top .discuss-top-right {
+  width: 570rpx;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 36rpx;
+  padding-bottom: 30rpx;
+  box-sizing: border-box;
+  font-size: 34rpx;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.discuss-detail .discuss-top .discuss-top-right .user-name {
+  display: inline-block;
+}
+
+.discuss-detail .discuss-top .discuss-top-right .long-time {
+  margin: 20rpx 0;
+  font-size: 26rpx;
+  color: #aaa;
+}
+
+.discuss-detail .discuss-top .discuss-top-right .discuss-bottom {
+  font-size: 30rpx;
+  line-height: 42rpx;
+}
+.discuss-detail .discuss-top .discuss-top-right .discuss-from{
+  font-size: 26rpx;
+  color: #999;
+  margin-top: 20rpx;
+}
+/*  暂无评论样式  */
+
+.no-discuss {
+  height: 120rpx;
+  line-height: 120rpx;
+  font-size: 30rpx;
+  color: #666;
+  text-align: center;
+}

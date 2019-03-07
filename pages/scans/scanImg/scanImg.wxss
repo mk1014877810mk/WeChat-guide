@@ -1,0 +1,4 @@
+/* pages/scans/scanImg/scanImg.wxss */
+ view, text, button {
+  color: #333;
+} 

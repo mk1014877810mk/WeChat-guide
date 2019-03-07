@@ -1,0 +1,25 @@
+<!--pages/home/proExpList/proExpList.wxml-->
+<view class='proExp'>
+  <view class='proExp-detail' bindtap='goProjectDetail' wx:for="{{dataList}}" wx:key="{{index}}" data-explain_id="{{item.explain_id}}" data-i_id="{{item.i_id}}" data-user_id="{{item.user_id}}">
+    <view class='detail-left'>
+      <image mode='scaleToFill' style='width:120rpx;height:120rpx;' src='{{item.explain_image}}'></image>
+    </view>
+    <view class='detail-right'>
+      <view class='detail-title one-txt-cut'>{{item.explain_title}}</view>
+      <view class='detail-listen'>有{{item.listen_number}}人正在听</view>
+      <view class='detail-info'>
+        <text class='detail-name'>{{item.explain_name}}</text>
+        <text class='detail-year'>{{item.explain_age}} {{item.explain_conset}}</text>
+        <view class='praise'>
+          <text class='iconfont icon-zan2' bindtap='goTips'></text>
+          <text class='praise-num'>{{item.is_link}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='load-text' wx:if="{{showLoadText}}">
+    <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/loading.gif' wx:if="{{sendAjax}}"></image>
+    <view>{{loadText}}</view>
+  </view>
+  <view class='no-data' wx:if="{{showNoData}}">此展项暂无讲解员讲解</view>
+</view>

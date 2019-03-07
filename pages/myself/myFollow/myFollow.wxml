@@ -1,0 +1,31 @@
+<!--pages/myself/myFollow/myFollow.wxml-->
+<!--pages/home/follow/follow.wxml-->
+<view class='follow'>
+  <view class='follow-title'>
+    <text>我关注的讲解员</text>
+    <text class='iconfont icon-addfollow' bindtap='goFollow'></text>
+  </view>
+  <view class='follow-content'>
+    <view class='explainer-detail' wx:for="{{dataList}}" wx:key="{{index}}" id="{{item.j_id}}" bindtap='cancelFollow'>
+      <view class='detail-top'>
+        <image mode='scaleToFill' style='width:100%;height:240rpx;' src='{{item.explain_image}}'></image>
+        <text>{{item.explain_label}}</text>
+      </view>
+      <view class='detail-bottom'>
+        <view class='detail-name'>{{item.explain_name}}</view>
+        <view class='detail-info'>
+          <text>{{item.explain_name}}</text>
+          <text>{{item.explain_conset}}</text>
+          <text class='iconfont icon-chakantieziguanzhu blue'></text>
+        </view>
+      </view>
+    </view>
+    <view class='no-data' wx:if="{{showNoData}}">
+      当前没有关注的讲解员
+    </view>
+    <view class='load-text' wx:if="{{showLoadText}}">
+      <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/loading.gif' wx:if="{{sendAjax}}"></image>
+      <view>{{loadText}}</view>
+    </view>
+  </view>
+</view>

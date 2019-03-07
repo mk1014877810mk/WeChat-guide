@@ -1,0 +1,86 @@
+/* pages/myself/myFollow/myFollow.wxss */
+
+view, text, button {
+  color: #333;
+}
+
+.follow {
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+.follow .follow-title {
+  width: 100%;
+  height: 96rpx;
+  line-height: 96rpx;
+  font-weight: 600;
+  font-size: 36rpx;
+  text-align: center;
+}
+
+.follow .follow-title .iconfont {
+  float: right;
+  font-size: 38rpx;
+  color: #999;
+}
+
+.follow .follow-content .explainer-detail {
+  display: inline-block;
+  width: 345rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0rpx 2rpx 10rpx #f5f3f3;
+}
+
+.follow .follow-content .explainer-detail:nth-child(2n+1) {
+  margin-right: 20rpx;
+}
+
+.follow .follow-content .explainer-detail .detail-top {
+  position: relative;
+}
+
+.follow .follow-content .explainer-detail .detail-top text {
+  position: absolute;
+  padding: 4rpx 10rpx;
+  left: 0;
+  top: o;
+  background-color: #09f;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.follow .follow-content .explainer-detail .detail-bottom {
+  padding: 20rpx;
+  line-height: 40rpx;
+}
+
+.follow .follow-content .explainer-detail .detail-bottom .detail-name {
+  font-size: 32rpx;
+}
+
+.follow .follow-content .explainer-detail .detail-bottom .detail-info text {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.follow .follow-content .explainer-detail .detail-bottom .detail-info text:nth-child(1) {
+  margin-right: 20rpx;
+}
+
+.follow .follow-content .explainer-detail .detail-bottom .detail-info text.iconfont {
+  float: right;
+  font-size: 36rpx;
+  line-height: 40rpx;
+}
+
+.follow .follow-content .explainer-detail .detail-bottom .detail-info text.iconfont.blue {
+  color: #09f;
+}
+
+.follow .follow-content .no-data {
+  height: 300rpx;
+  line-height: 300rpx;
+  font-size: 32rpx;
+  color: #999;
+  text-align: center;
+}

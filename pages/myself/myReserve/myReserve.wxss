@@ -1,0 +1,92 @@
+/* pages/myself/myReserve/myReserve.wxss */
+
+view, text, button {
+  color: #333;
+}
+
+page {
+  background-color: #efeff4;
+}
+
+.reserve {
+  padding: 20rpx;
+}
+
+.reserve .reserve-detail {
+  width: 100%;
+  height: 250rpx;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+
+.reserve .reserve-detail .left {
+  position: relative;
+  display: inline-block;
+}
+
+.reserve .reserve-detail .left text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 2rpx 10rpx;
+  background-color: #09f;
+  color: #fff;
+  font-size: 26rpx;
+}
+
+.reserve .reserve-detail .right {
+  display: inline-block;
+  width: 460rpx;
+  padding: 26rpx 30rpx;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+
+.reserve .reserve-detail .right .title {
+  font-size: 32rpx;
+  margin-bottom: 10rpx;
+  font-weight: 600;
+}
+
+.reserve .reserve-detail .right .content {
+  line-height: 48rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.reserve .reserve-detail .right .content>text{
+  color: #999;
+}
+
+.reserve .reserve-detail .right .content text:nth-child(1) {
+  color: #09f;
+  font-size: 30rpx;
+  margin-right: 20rpx;
+}
+
+.reserve .reserve-detail .right .checked {
+  position: relative;
+  float: right;
+  width: 34rpx;
+  height: 34rpx;
+  border: 1rpx solid #ff2b2b;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.reserve .reserve-detail .right .checked text {
+  position: absolute;
+  top: -7rpx;
+  left: -1rpx;
+  color: #ff2b2b!important;
+  font-size: 38rpx!important;
+}
+
+.show-no-data{
+  width: 100%;
+  height: 300rpx;
+  line-height: 300rpx;
+  color: #999;
+  text-align: center;
+  font-size: 32rpx;
+}

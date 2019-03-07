@@ -1,0 +1,153 @@
+/* pages/home/tips/tips.wxss */
+@import "../../../wxParse/wxParse.wxss";
+
+/* view, text, button {
+  color: #333;
+} */
+
+.tips {
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+
+.tips .tips-title>text {
+  display: inline-block;
+  margin: 0 0 30rpx 10rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.tips .tip-content {
+  margin: 20rpx 0;
+  /* font-size: 30rpx;
+  line-height: 50rpx;
+  padding: 0 20rpx;
+  text-indent: 2em;
+  color: #333;
+  box-sizing: border-box; */
+}
+
+.tips .tip-content .wxParse-img {
+  width: 100% !important;
+}
+
+/* 展览信息 */
+
+.tips .hall-info {
+  margin-bottom: 20rpx;
+}
+
+.tips .hall-info text {
+  display: inline-block;
+  color: #333;
+  font-size: 30rpx;
+  vertical-align: middle;
+  line-height: 50rpx;
+}
+
+.tips .hall-info text:nth-child(1) {
+  font-size: 40rpx;
+  color: #09f;
+  margin-right: 20rpx;
+}
+
+.tips .hall-info text:nth-child(3) {
+  display: block;
+  margin-left: 58rpx;
+}
+
+/* 
+.tips .hall-info text.icon-location {
+  font-size: 46rpx;
+  margin-left: -2rpx;
+} */
+
+/* 交通攻略 */
+
+.tips .tool {
+  margin-bottom: 20rpx;
+  font-size: 30rpx;
+  line-height: 50rpx;
+}
+
+.tips .tool text {
+  vertical-align: middle;
+  float: left;
+}
+
+.tips .tool text:nth-child(1) {
+  font-size: 40rpx;
+  color: #09f;
+  margin-right: 20rpx;
+}
+
+.tips .tool view {
+  display: inline-block;
+  width: 540rpx;
+}
+
+/* 周边住宿 */
+
+.tips .tips-title .go-around {
+  float: right;
+  color: #09f;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  margin-right: 20rpx;
+}
+
+.tips .hall-list {
+  margin-bottom: 34rpx;
+}
+
+.tips .hall-list:nth-last-child(1) {
+  margin-bottom: 0;
+}
+
+.tips .hall-list .hall-detail>view {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.tips .hall-list .detail-left {
+  width: 240rpx;
+}
+
+.tips .hall-list .detail-right {
+  width: 440rpx;
+  padding: 0 20rpx 34rpx;
+  margin-left: 10rpx;
+  margin-top: -10rpx;
+  line-height: 50rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #f5f3f3;
+}
+
+.tips .hall-list .detail-right .detail-title {
+  font-size: 30rpx;
+}
+
+.tips .hall-list .detail-right .detail-address {
+  font-size: 28rpx;
+  color: #666;
+  height: 92rpx;
+  line-height: 44rpx;
+}
+
+.tips .hall-list .detail-right .detail-tips {
+  display: inline-block;
+  font-size: 28rpx;
+  padding: 0rpx 20rpx;
+  box-sizing: border-box;
+  background-color: #f5f3f3;
+}
+
+.tips .go-map {
+  font-size: 28rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #999;
+  float: right;
+  margin-right: 16rpx;
+}

@@ -1,0 +1,183 @@
+<!--pages/home/index/index.wxml-->
+<!-- 活动订阅遮罩层 -->
+<!-- <view class='modal' wx:if="{{activity.showModal}}">
+  <view>第一步，点击右上角“三个点”</view>
+  <view>第二步，点击下方“关于”</view>
+  <view>第三步，点击“相关公众号”</view>
+  <view>第四步，点击“上海科技馆”并关注</view>
+  <view class='btn'>
+    <text bindtap='isCheck' data-index="0">取消</text>
+    <text bindtap='isCheck' data-index="1">确定订阅</text>
+  </view>
+  <image class='arrow' mode='scaleToFill' style='width:60rpx;height:180rpx;' src='../../../images/jiantou.png'></image>
+</view> -->
+<!-- 搜索框 -->
+<!-- 
+    "pages/myself/myExplain/myExplain"
+    "pages/myself/myExplain/myExplain"
+    "pages/myself/myExplain/myExplain"
+    "pages/myself/myExplain/myExplain"
+<view class="search">
+  <text class='iconfont icon-sousuo'></text>
+  <view class='btn'>搜索博物馆/科技馆/景点</view>
+  <text class='iconfont icon-xinshoubangzhu' bindtap='goTips'></text>
+</view> 
+-->
+
+<!-- 轮播图 -->
+<view class='swiper'>
+  <swiper indicator-dots="{{swiper.indicatorDots}}" autoplay="{{swiper.autoplay}}" interval="{{swiper.interval}}" circular="{{swiper.circular}}" duration="{{swiper.duration}}" loop indicator-color="{{swiper.indicatorColor}}" indicator-active-color="{{swiper.indicatorActivColor}}">
+    <block wx:for="{{swiper.imgUrls}}" wx:key="{{index}}">
+      <swiper-item>
+        <image mode='aspectFill' src="{{item.banner_thumb}}" data-title='{{item.banner_name}}' data-i_id='{{item.id}}' data-pavilion_id='{{item.pavilion_id}}' data-sort='{{item.banner_sort}}' data-direction='{{item.direction_content}}' style="height:300rpx;width:750rpx;"
+          bindtap='goDetail'></image>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<!-- tab栏 -->
+<view class='tab'>
+  <view class='big-tab-nav'>
+    <view class='big-nav-title'>
+      <view data-index="0" class='hall {{activeTab==0?"active":""}}' bindtap='changeBigTab'>展厅</view>
+    </view>
+    <view class='big-nav-title'>
+      <view data-index="1" class='explain {{activeTab==1?"active":""}}' bindtap='changeBigTab'>讲解</view>
+    </view>
+    <view class='big-nav-title'>
+      <view data-index="2" class='activity {{activeTab==2?"active":""}}' bindtap='changeBigTab'>活动</view>
+    </view>
+  </view>
+  <view class='big-tab-detail'>
+    <view class='big-hall-detail' style='height:{{bigTabHeight}}rpx;'>
+      <swiper current="{{currentTab}}" class="swiper-box" bindchange="bindChange">
+        <!-- 展厅tab详情 -->
+        <swiper-item>
+          <!-- <view class='big-hall-detail-title'>选您喜欢</view> -->
+          <scroll-view class='scroll-view' scroll-x='true'>
+            <view class='title-detail {{hall.activeHallTab==(index-1)?"current-title":""}}' bindtap='changeHallActive' wx:for="{{hall.titleList}}" wx:key="{{index}}" id="{{item.p_id}}">{{item.partition_name}}</view>
+          </scroll-view>
+          <view class='hall-List'>
+            <view class='list-detail' wx:for="{{hall.hallDetailList}}" id="{{item.i_id}}" wx:key="{{index}}" bindtap='goProjectDetail'>
+              <view class='list-top'>
+                <image src='{{item.items_thumb}}' mode='aspectFill' style='width:345rpx;height:218rpx;'></image>
+              </view>
+              <view class='list-bottom'>
+                <view class='list-bottom-title  one-txt-cut'>{{item.items_name}}</view>
+                <view class='list-bottom-look'>
+                  <text wx:if='{{hall.activeHallTab=="-1"}}'>
+                  <text class='iconfont icon-yanjing'> </text> {{item.is_click}}
+                  </text>
+                  <text wx:if='{{hall.activeHallTab!=="-1"}}'>
+                  <text class='iconfont icon-zan2'></text> {{item.is_link}}
+                  </text>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class='load-text' wx:if="{{showLoadText}}">
+            <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/loading.gif' wx:if="{{sendAjax}}"></image>
+            <view>{{loadText}}</view>
+          </view>
+        </swiper-item>
+        <!-- 讲解tab详情 -->
+        <swiper-item>
+          <view class='explain'>
+            <view class='explain-list' wx:for="{{explain.explainDetailList}}" wx:key="{{index}}">
+              <view class='detail-top' catchtap='goProjectDetailFromExplain' data-i_id="{{item.i_id}}" data-explain_id="{{item.explain_id}}">
+                <image mode='aspectFill' style='width:345rpx;height:218rpx;display:block;' src='{{item.items_thumb}}'></image>
+              </view>
+              <view class='detail-bottom'>
+                <view class='detail-title'>{{item.items_name}}</view>
+                <view>
+                  <!-- 已浏览<text class='play-count'>{{item.is_click}}</text> 次 -->
+                  <text class='iconfont icon-yanjing'> </text>
+                  <text> {{item.is_click}}</text>
+                  <text class='border-left'></text>
+                  <view class='explainer-info'>
+                    <view catchtap='goExpPersonal' id="{{item.explain_id}}">
+                      <image mode='scaleToFill' style='width:40rpx;height:40rpx;' src='{{item.explain_image}}'></image>
+                    </view>
+                    <view class='one-txt-cut'>{{item.explain_name}}</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class='load-text' wx:if="{{explain.showLoadText}}">
+            <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/loading.gif' wx:if="{{explain.sendAjax}}"></image>
+            <view>{{explain.loadText}}</view>
+          </view>
+        </swiper-item>
+        <!-- 活动tab详情 -->
+        <swiper-item>
+          <view class='activity'>
+            <!-- <view class='activity-top'>
+              <label class='radio' bindtap='changeChecked'>
+                <view class='checked'>
+                  <text wx:if="{{activity.checked}}" class='iconfont icon-duigou'></text>
+                </view>订阅，有新活动立即通知我
+              </label>
+            </view> -->
+            <view class='activity-list'>
+              <view class='activity-detail' wx:for="{{activity.activityDetailList}}" wx:key="{{index}}" id="{{item.d_id}}" bindtap='goActivityDetail'>
+                <view class='detail-left'>
+                  <image mode='aspectFill' style='width:280rpx;height:200rpx;' src='{{item.activity_thumb}}'></image>
+                  <view class='tips'>{{item.is_free == "0"? "免费":"¥ "+item.amount}}</view>
+                </view>
+                <view class='detail-right'>
+                  <view class='detail-title one-txt-cut'>{{item.activity_name}}</view>
+                  <view class='activity-start'>{{item.is_reser=="0"?"无需预约":"预约中"}}</view>
+                  <view class='start-time'>
+                    <text class='iconfont icon-shijianzhongbiao'></text>
+                    <text>{{item.start_time}}</text>
+                  </view>
+                  <view class='person-limit'>
+                    <text class='iconfont icon-renshutongji'></text>
+                    <text>{{item.limit_range}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class='past-activity'>
+            <view class='past-activity-btn' bindtap='showPastActivity'>
+              <text>往期活动  </text>
+              <text wx:if='{{activity.showPast}}' class='iconfont icon-xiajiantou'>  {{item.is_click}}</text>
+              <text wx:if='{{!activity.showPast}}' class='iconfont icon-shangjiantou'>  {{item.is_click}}</text>
+            </view>
+            <view class='past-act-detail' wx:if='{{activity.showPast}}'>
+              <view class='activity-detail' wx:for="{{activity.pastData.pastList}}" wx:key="{{index}}" id="{{item.d_id}}" data-info="guoqi" bindtap='goActivityDetail'>
+                <view class='detail-left'>
+                  <image mode='aspectFill' style='width:280rpx;height:200rpx;' src='{{item.activity_thumb}}'></image>
+                  <view class='tips'>{{item.is_free == "0"? "免费":"¥ "+item.amount}}</view>
+                </view>
+                <view class='detail-right'>
+                  <view class='detail-title two-txt-cut'>{{item.activity_name}}</view>
+                  <view class='activity-start'>不可预约</view>
+                  <view class='start-time'>
+                    <text class='iconfont icon-shijianzhongbiao'></text>
+                    <text>{{item.start_time}}</text>
+                  </view>
+                  <view class='person-limit'>
+                    <text class='iconfont icon-renshutongji'></text>
+                    <text>{{item.limit_range}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class='load-text' id="1" wx:if="{{activity.showLoadText}}">
+            <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/loading.gif' wx:if="{{activity.sendAjax}}"></image>
+            <view>{{activity.loadText}}</view>
+          </view>
+          <view class='load-text' id="2" wx:if="{{activity.pastData.showLoadText}}">
+            <image mode='scaleToFill' style='width:100rpx;height:100rpx;' src='../../../images/loading.gif' wx:if="{{activity.pastData.sendAjax}}"></image>
+            <view>{{activity.pastData.loadText}}</view>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+</view>

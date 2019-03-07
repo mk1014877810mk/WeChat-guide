@@ -1,0 +1,37 @@
+<!--pages/myself/mine/mine.wxml-->
+<view>
+  <view class='mine-top'>
+    <view class='pic'>
+      <image mode='scaleToFill' style='width:140rpx;height:140rpx;' src='{{mineSrc}}'></image>
+    </view>
+    <text class='user-name'>{{mineName}}</text>
+  </view>
+  <view class='mine-bottom'>
+    <view bindtap='goMyDiscuss'>
+      <text class='iconfont icon-ico_pinglun symbal'></text>
+      <text>我的评论</text>
+      <image class='arrow' mode='scaleToFill' style='width:40rpx;height:40rpx;' src='../../../images/right.png'></image>
+    </view>
+    <view bindtap='goMyFollow'>
+      <text class='iconfont icon-guanzhu symbal'></text>
+      <text>我的关注</text>
+      <image class='arrow' mode='scaleToFill' style='width:40rpx;height:40rpx;' src='../../../images/right.png'></image>
+    </view>
+    <view bindtap='goMyReserve'>
+      <text class='iconfont icon-yuyuedengjilei symbal'></text>
+      <text>我的预约</text>
+      <image class='arrow' mode='scaleToFill' style='width:40rpx;height:40rpx;' src='../../../images/right.png'></image>
+    </view>
+     <view  bindtap='goMyExplain'>
+      <text class='iconfont icon-aixinfengxian symbal'></text>
+      <text>志愿者</text>
+      <image class='arrow' mode='scaleToFill' style='width:40rpx;height:40rpx;' src='../../../images/right.png'></image>
+    </view> 
+    
+     <view  bindtap='goMyHelp'>
+      <text class='iconfont icon-aixinfengxian symbal'></text>
+      <text>帮助</text>
+      <image class='arrow' mode='scaleToFill' style='width:40rpx;height:40rpx;' src='../../../images/right.png'></image>
+    </view> 
+  </view>
+</view>

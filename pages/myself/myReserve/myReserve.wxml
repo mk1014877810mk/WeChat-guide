@@ -1,0 +1,30 @@
+<!--pages/myself/myReserve/myReserve.wxml-->
+<view class='reserve'>
+  <view class='reserve-detail' wx:for='{{dataList}}' wx:key="{{index}}" data-d_id='{{item.d_id}}' bindtap='goActivityDetail'>
+    <view class='left'>
+      <image mode='aspectFill' style='width:250rpx;height:250rpx;' src='{{item.activity_thumb}}'></image>
+      <text>{{item.is_free=="0"? "免费":"¥ "+item.amount}}</text>
+    </view>
+    <view class='right'>
+      <view class='title one-txt-cut'>{{item.activity_name}}</view>
+      <view class='content'>
+        <text class='iconfont icon-shijianzhongbiao'></text>
+        <text>{{item.start_time}}</text>
+      </view>
+      <view class='content'>
+        <text class='iconfont icon-renshutongji blue'></text>
+        <text>{{item.reser_name}}</text>
+      </view>
+      <view class='content'>
+        <text class='iconfont icon-shouji blue'></text>
+        <text>{{item.reser_phone}}</text>
+        <!-- <label class='radio' data-l_id="{{item.l_id}}" catchtap='changeChecked'>
+          <view class='checked'>
+            <text wx:if="{{checked}}" class='iconfont icon-duigou'></text>
+          </view>
+        </label> -->
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{showNoData}}" class='show-no-data'>当前没有预约成功的活动信息</view>
+</view>

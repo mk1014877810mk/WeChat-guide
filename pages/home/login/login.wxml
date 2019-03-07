@@ -1,0 +1,5 @@
+<!--pages/home/login/login.wxml-->
+<view>
+  <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 开启环游之旅 </button>
+  <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" style='bottom:10rpx;'> 开启环游之旅 </button> -->
+</view>

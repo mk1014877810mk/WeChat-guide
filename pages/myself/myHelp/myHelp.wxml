@@ -1,0 +1,3 @@
+<!--pages/myself/myHelp/myHelp.wxml-->
+<input style='border:1rpx solid #ddd;margin-top:20rpx;margin-left:10rpx;width:730rpx;' bindinput='getVal' placeholder='请输入http/https开头的网址'></input>
+<button bindtap='goDetail' style='width:500rpx;margin-top:30rpx;'>跳转</button>
